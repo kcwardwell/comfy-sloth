@@ -1,8 +1,24 @@
 import React, { useState } from 'react'
+import { FaSearch } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { formatPrice } from '../utils/helpers'
 
-const ProductImages = () => {
-  return <h4>product images</h4>
+const ProductImages = ({ image, name, price, id }) => {
+  return (
+    <Wrapper>
+      <div className="container">
+        <img src={image} alt={name} />
+        <Link className="link" to={`/products${id}`}>
+          <FaSearch />
+        </Link>
+      </div>
+      <footer>
+        <h5>{name}</h5>
+        <p>{formatPrice(price)}</p>
+      </footer>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`

@@ -1,27 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { links } from './constants'
 
-export const formatPrice = () => { }
+
+export const formatPrice = (number) => { 
+    const formattedNumber = Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',       
+    }).format(number/100)
+    return formattedNumber
+}
 
 export const getUniqueValues = () => { }
 
-export const getLinks = (ulClass) => {
-  return (
-    <>
-      <ul className={ulClass}>
-        {links.map((link) => {
-          const { id, text, url, } = link
-          return (
-            <li key={id}>
-              <Link to={url}>{text}</Link>
-            </li>
-          )
-        })}
-        <li>
-          <Link to="/checkout">checkout</Link>
-        </li>
-      </ul>
-    </>
-  )
-}
+
